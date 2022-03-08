@@ -1,5 +1,5 @@
 {
-  "npmScope": "demo",
+  "npmScope": "poc",
   "affected": {
     "defaultBase": "master"
   },
@@ -42,5 +42,5 @@
       }
     }
   },
-  "defaultProject": "demo-app"
+  "defaultProject": "poc-app"
 }

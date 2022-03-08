@@ -1,6 +1,6 @@
 {
-  "root": "apps/demo-app",
-  "sourceRoot": "apps/demo-app",
+  "root": "apps/poc-app",
+  "sourceRoot": "apps/poc-app",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,8 +8,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/demo-app",
-        "outputPath": "dist/apps/demo-app"
+        "root": "apps/poc-app",
+        "outputPath": "dist/apps/poc-app"
       },
       "configurations": {
         "production": {}
@@ -18,12 +18,12 @@
     "serve": {
       "executor": "@nrwl/next:server",
       "options": {
-        "buildTarget": "demo-app:build",
+        "buildTarget": "poc-app:build",
         "dev": true
       },
       "configurations": {
         "production": {
-          "buildTarget": "demo-app:build:production",
+          "buildTarget": "poc-app:build:production",
           "dev": false
         }
       }
@@ -31,14 +31,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "demo-app:build:production"
+        "buildTarget": "poc-app:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/demo-app"],
+      "outputs": ["coverage/apps/poc-app"],
       "options": {
-        "jestConfig": "apps/demo-app/jest.config.js",
+        "jestConfig": "apps/poc-app/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -46,7 +46,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/demo-app/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/poc-app/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
