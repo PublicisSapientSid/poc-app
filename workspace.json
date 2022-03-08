@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "poc-app": "apps/poc-app",
-    "poc-app-e2e": "apps/poc-app-e2e"
+    "poc-app-e2e": "apps/poc-app-e2e",
+    "slider": "libs/slider"
   }
 }
