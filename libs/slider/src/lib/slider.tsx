@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styles from './slider.module.scss';
 
 export type sliderLegend = {
@@ -11,16 +11,17 @@ export interface SliderProps {
   max: number;
   defaultVal?: number;
   sliderLegends?: sliderLegend;
+  divisions?: number;
 }
 
 const defaultSliderLegends: sliderLegend = {
-  0: 'Not so good',
-  1: 'Below average',
-  2: 'Average',
-  3: 'Okay',
-  4: 'Good',
-  5: 'Pretty good',
-  6: 'Awesome',
+  0: 'Not at all',
+  1: 'Very less',
+  2: 'Barely',
+  3: 'Not much',
+  4: 'Just about enough',
+  5: 'Absolutely',
+  6: 'Very much so',
 };
 
 export function Slider({
@@ -28,24 +29,35 @@ export function Slider({
   min = 0,
   max = 6,
   defaultVal = 3,
+  divisions = 10,
 }: SliderProps) {
   const [sliderVal, setSliderVal] = useState(defaultVal);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<any>) => {
     setSliderVal(e.target.value);
   };
 
+  const maxLength = Object.keys(sliderLegends).length - 1;
+  max = Math.min(max, maxLength);
+
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to Slider!</h1>
-      <p>{sliderLegends[sliderVal]}</p>
+    <div className={styles['slider-container']}>
+      <h2 className={styles['value-text']}>
+        {sliderLegends[Math.round(sliderVal)]}
+      </h2>
       <input
+        className={styles['slider']}
         type="range"
         min={min}
         max={max}
         onChange={handleChange}
         value={sliderVal}
+        step={1 / divisions}
       />
+      <small className={styles['range-indicators']}>
+        <p>{sliderLegends[min]}</p>
+        <p>{sliderLegends[max]}</p>
+      </small>
     </div>
   );
 }

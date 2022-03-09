@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "slider-story": "nx run slider:storybook"
   },
   "private": true,
   "dependencies": {

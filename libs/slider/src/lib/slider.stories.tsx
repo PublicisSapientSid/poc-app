@@ -4,9 +4,17 @@ import { Slider } from './slider';
 export default {
   component: Slider,
   title: 'Slider',
+  argTypes: { handleChange: { action: 'changed' } },
 } as Meta;
 
-const Template: Story = (args) => <Slider {...args} />;
+const Template: Story = (args) => <Slider max={args['max']} {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const MaxExceededRange = Template.bind({});
+MaxExceededRange.args = {
+  max: 100,
+};
+
+export const MaxLowerRange = Template.bind({});
+MaxLowerRange.args = {
+  max: 4,
+};

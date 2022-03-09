@@ -1,7 +1,52 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.slider-container {
+  width: 300px;
+
+  .value-text {
+    text-align: center;
+  }
+
+  .slider {
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 30px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 30px;
+
+    &::-webkit-slider-runnable-track {
+      background: #ddd;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 30px; /* 1 */
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: -100vw 0 0 99vw #475569, 0px 4px 14px 0px #384353;
+      border: 2px solid #999; /* 1 */
+    }
+
+    &::-ms-ticks-after {
+      display: none;
+    }
+
+    &::-ms-ticks-before {
+      display: none;
+    }
+
+    &::-ms-track {
+      background: #ddd;
+      color: transparent;
+      height: 30px;
+      border: none;
+    }
+  }
+
+  .range-indicators {
+    display: flex;
+    justify-content: space-between;
+  }
+}
