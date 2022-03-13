@@ -9,7 +9,7 @@ export function Index() {
    */
   return (
     <div className={styles.page}>
-      <Slider max={6} defaultVal={2} divisions={10} />
+      <Slider max={6} defaultVal={2} stepDivisions={10} />
     </div>
   );
 }

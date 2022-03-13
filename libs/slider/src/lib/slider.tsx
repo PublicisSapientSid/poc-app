@@ -14,7 +14,7 @@ export interface SliderProps {
   max: number;
   defaultVal?: number;
   sliderLegends?: sliderLegend;
-  divisions?: number;
+  stepDivisions?: number;
   sliderLength?: sliderSizes;
   sliderColor?: sliderColors;
 }
@@ -34,7 +34,7 @@ export function Slider({
   min = 0,
   max = 6,
   defaultVal = 3,
-  divisions = 10,
+  stepDivisions = 10,
   sliderLength = 'md',
   sliderColor = 'gray-slider',
 }: SliderProps) {
@@ -59,7 +59,7 @@ export function Slider({
         max={max}
         onChange={handleChange}
         value={sliderVal}
-        step={1 / divisions}
+        step={1 / stepDivisions}
       />
       <small className={styles['range-indicators']}>
         <p>{sliderLegends[min]}</p>

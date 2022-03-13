@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { Slider } from './slider';
+import { Slider, SliderProps } from './slider';
 
 export default {
   component: Slider,
@@ -7,7 +7,7 @@ export default {
   argTypes: { handleChange: { action: 'changed' } },
 } as Meta;
 
-const Template: Story = (args) => <Slider max={args['max']} {...args} />;
+const Template: Story<SliderProps> = (args) => <Slider {...args} />;
 
 export const MaxExceededRange = Template.bind({});
 MaxExceededRange.args = {
@@ -17,4 +17,17 @@ MaxExceededRange.args = {
 export const MaxLowerRange = Template.bind({});
 MaxLowerRange.args = {
   max: 4,
+};
+
+export const OrangeSlider = Template.bind({});
+OrangeSlider.args = {
+  sliderColor: 'orange-slider',
+  sliderLength: 'sm',
+};
+
+export const ChoppySlider = Template.bind({});
+ChoppySlider.args = {
+  stepDivisions: 1,
+  sliderColor: 'blue-slider',
+  sliderLength: 'lg',
 };
