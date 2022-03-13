@@ -5,13 +5,18 @@ export type sliderLegend = {
   [range: number]: string;
 };
 
-/* eslint-disable-next-line */
+export type sliderSizes = 'sm' | 'md' | 'lg';
+
+export type sliderColors = 'orange-slider' | 'gray-slider' | 'blue-slider';
+
 export interface SliderProps {
   min?: number;
   max: number;
   defaultVal?: number;
   sliderLegends?: sliderLegend;
   divisions?: number;
+  sliderLength?: sliderSizes;
+  sliderColor?: sliderColors;
 }
 
 const defaultSliderLegends: sliderLegend = {
@@ -30,6 +35,8 @@ export function Slider({
   max = 6,
   defaultVal = 3,
   divisions = 10,
+  sliderLength = 'md',
+  sliderColor = 'gray-slider',
 }: SliderProps) {
   const [sliderVal, setSliderVal] = useState(defaultVal);
 
@@ -41,12 +48,12 @@ export function Slider({
   max = Math.min(max, maxLength);
 
   return (
-    <div className={styles['slider-container']}>
+    <div className={`${styles[sliderLength]} ${styles['slider-container']}`}>
       <h2 className={styles['value-text']}>
         {sliderLegends[Math.round(sliderVal)]}
       </h2>
       <input
-        className={styles['slider']}
+        className={`${styles[sliderColor]} ${styles['slider']}`}
         type="range"
         min={min}
         max={max}
