@@ -3,6 +3,12 @@
     text-align: center;
   }
 
+  .preview-value {
+    margin: 0.5rem auto;
+    display: block;
+    width: 40px;
+  }
+
   .slider {
     margin: auto;
     -webkit-appearance: none;
@@ -61,6 +67,10 @@
   .range-indicators {
     display: flex;
     justify-content: space-between;
+
+    img {
+      width: 25px;
+    }
   }
 }
 

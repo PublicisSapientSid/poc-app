@@ -1,10 +1,10 @@
 import { Story, Meta } from '@storybook/react';
-import { Slider, SliderProps } from './slider';
+import { emojiSliderLegends, Slider, SliderProps } from './slider';
 
 export default {
   component: Slider,
   title: 'Slider',
-  argTypes: { handleChange: { action: 'changed' } },
+  // argTypes: { handleChange: { action: 'changed' } },
 } as Meta;
 
 const Template: Story<SliderProps> = (args) => <Slider {...args} />;
@@ -30,4 +30,10 @@ ChoppySlider.args = {
   stepDivisions: 1,
   sliderColor: 'blue-slider',
   sliderLength: 'lg',
+};
+
+export const EmojiSlider = Template.bind({});
+EmojiSlider.args = {
+  sliderLength: 'sm',
+  sliderLegends: emojiSliderLegends,
 };

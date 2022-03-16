@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './slider.module.scss';
 
-export type sliderLegend = {
-  [range: number]: string;
-};
+export interface sliderLegend {
+  dataType: 'text' | 'image';
+  data: string[];
+}
 
 export type sliderSizes = 'sm' | 'md' | 'lg';
 
@@ -19,18 +20,33 @@ export interface SliderProps {
   sliderColor?: sliderColors;
 }
 
-const defaultSliderLegends: sliderLegend = {
-  0: 'Not at all',
-  1: 'Very less',
-  2: 'Barely',
-  3: 'Not much',
-  4: 'Just about enough',
-  5: 'Absolutely',
-  6: 'Very much so',
+const textSliderLegends: sliderLegend = {
+  dataType: 'text',
+  data: [
+    'Not at all',
+    'Very less',
+    'Barely',
+    'Not much',
+    'Just about enough',
+    'Absolutely',
+    'Very much so',
+  ],
+};
+
+export const emojiSliderLegends: sliderLegend = {
+  dataType: 'image',
+  data: [
+    'https://cdn.shopify.com/s/files/1/1061/1924/files/Very_Angry_Emoji_60x60.png?2976903553660223024',
+    'https://cdn.shopify.com/s/files/1/1061/1924/files/Disappointed_Face_Emoji_60x60.png?8026536574188759287',
+    'https://cdn.shopify.com/s/files/1/1061/1924/files/Expressionless_Face_Emoji_60x60.png?8026536574188759287',
+    'https://cdn.shopify.com/s/files/1/1061/1924/files/Kissing_Face_Emoji_60x60.png?8026536574188759287',
+    'https://cdn.shopify.com/s/files/1/1061/1924/files/Slightly_Smiling_Face_Emoji_Icon_60x60.png?16228697460559734940',
+    'https://cdn.shopify.com/s/files/1/1061/1924/files/Smiling_Emoji_with_Smiling_Eyes_Icon_60x60.png?16228697460559734940',
+  ],
 };
 
 export function Slider({
-  sliderLegends = defaultSliderLegends,
+  sliderLegends = textSliderLegends,
   min = 0,
   max = 6,
   defaultVal = 3,
@@ -44,14 +60,37 @@ export function Slider({
     setSliderVal(e.target.value);
   };
 
-  const maxLength = Object.keys(sliderLegends).length - 1;
+  const maxLength = sliderLegends.data.length - 1;
   max = Math.min(max, maxLength);
+
+  const previewValue =
+    sliderLegends.dataType === 'text' ? (
+      <h2 className={styles['value-text']}>
+        {sliderLegends.data[Math.round(sliderVal)]}
+      </h2>
+    ) : (
+      <img
+        className={styles['preview-value']}
+        src={sliderLegends.data[Math.round(sliderVal)]}
+      />
+    );
+
+  const rangeIndicators =
+    sliderLegends.dataType === 'text' ? (
+      <>
+        <p>{sliderLegends.data[min]}</p>
+        <p>{sliderLegends.data[max]}</p>
+      </>
+    ) : (
+      <>
+        <img src={sliderLegends.data[min]} />
+        <img src={sliderLegends.data[max]} />
+      </>
+    );
 
   return (
     <div className={`${styles[sliderLength]} ${styles['slider-container']}`}>
-      <h2 className={styles['value-text']}>
-        {sliderLegends[Math.round(sliderVal)]}
-      </h2>
+      {previewValue}
       <input
         className={`${styles[sliderColor]} ${styles['slider']}`}
         type="range"
@@ -61,10 +100,7 @@ export function Slider({
         value={sliderVal}
         step={1 / stepDivisions}
       />
-      <small className={styles['range-indicators']}>
-        <p>{sliderLegends[min]}</p>
-        <p>{sliderLegends[max]}</p>
-      </small>
+      <small className={styles['range-indicators']}>{rangeIndicators}</small>
     </div>
   );
 }
