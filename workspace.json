@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "charts": "apps/charts",
+    "charts-e2e": "apps/charts-e2e",
     "poc-app": "apps/poc-app",
     "poc-app-e2e": "apps/poc-app-e2e",
     "slider": "libs/slider"
