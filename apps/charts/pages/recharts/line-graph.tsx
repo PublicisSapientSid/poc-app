@@ -20,6 +20,7 @@ const LineGraph: NextPage = () => {
                 height = {350}
                 data = {data}
                 showAxisLine = {false}
+                xAxis = {"name"}
                 prop = {"steps"}
                 showStrokedDash = {false}
                 totalPoints = {7}

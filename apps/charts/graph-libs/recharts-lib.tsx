@@ -1,5 +1,6 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, BarChart, Bar, ReferenceLine, RadarChart, PolarAngleAxis, PolarGrid, Radar, PolarRadiusAxis, PieChart, Pie } from 'recharts';
-import { BarProps, DonutProps, LineProps, PolarBarProps } from '../types/recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, BarChart, Bar, ReferenceLine, PolarAngleAxis, 
+    PieChart, Pie, Sector, Surface } from 'recharts';
+import { BarProps, DonutProps, LineProps, PolarAreaProps, PolarSectorOptions } from '../types/recharts';
 
 const getMaxValue = (data: any, prop: string) => {
 
@@ -7,11 +8,13 @@ const getMaxValue = (data: any, prop: string) => {
     return maxObject[prop];
 };
 
-export const RechartsLibLine = ({width, height, data, showAxisLine, prop, showStrokedDash, totalPoints}: LineProps) => {
+export const RechartsLibLine = ({width, height, data, showAxisLine, xAxis,  prop, showStrokedDash, totalPoints}: LineProps) => {
     
     const maxSteps: number = getMaxValue(data, prop);
     const totalRefLines: number = (totalPoints && totalPoints > 1) ? totalPoints-1 : 0;
     
+    const ticks: any[] = data.map((val: any) => val[xAxis]);
+
     let refLines: any = [];
     if(totalRefLines !== 0) {
         const refLinesGap: number = maxSteps / totalRefLines; 
@@ -31,6 +34,8 @@ export const RechartsLibLine = ({width, height, data, showAxisLine, prop, showSt
             <XAxis
                 dataKey="name"
                 type="category"
+                tickSize={data.length}
+                ticks={ticks}
                 padding={{ left: 20, right: 20 }}
             />
             <YAxis 
@@ -84,19 +89,57 @@ export const RechartsLibBar = ({width, height, data, prop, showAxisLine}: BarPro
     );
 };
 
-export const RechartsLibPolar = ({data, radarProp, polarProp, width, height}: PolarBarProps) => {
+export const RechartsLibPolar = ({data, prop, maxValue, width, height, centerX, centerY}: PolarAreaProps) => {
+    
+    const sectorOptions: PolarSectorOptions = {
+        sectorFills: ["#C4C4C4", "#F2F2F2"],
+        sectorOuterRadius: [
+          data.map((val: any) => val[prop]),
+          new Array(data.length).fill(maxValue)
+        ],
+        segmentsCount: data.length
+    };
 
-    const maxValue: number = getMaxValue(data, radarProp);
+    const angle: number = (360 / sectorOptions.segmentsCount);
+    const startAngleMargin: number = 1;
+    const endAngleMargin: number = 1;
 
     return (
-        <RadarChart outerRadius={150} width={width} height={height} style={{ margin: "0 auto" }}
-              data={data} >
-            <Radar name="Health Score" dataKey={radarProp} stroke=" " fill="#C4C4C4" fillOpacity={0.6} />
-            <PolarGrid gridType='circle'/>
-            <PolarAngleAxis dataKey={polarProp} />
-            <PolarRadiusAxis angle={15} domain={[0, maxValue]} />
-        </RadarChart>
-       )
+        <Surface width={width} height={height}>
+            {sectorOptions.sectorOuterRadius.map((outerRadius: any[], index: number) => {
+                const outerRadiusIndex = index;
+                const prevOuterRadius =
+                outerRadiusIndex === 0
+                    ? new Array(sectorOptions.segmentsCount).fill(60)
+                    : sectorOptions.sectorOuterRadius[outerRadiusIndex - 1];
+                const fill: string = sectorOptions.sectorFills[outerRadiusIndex];
+
+                return outerRadius.map((radius: number, index: number) => {
+                    const segmentIndex = index;
+                    const innerRadius = prevOuterRadius[segmentIndex];
+                    
+                    return (
+                        <Sector
+                            fill={fill}
+                            innerRadius={innerRadius}
+                            outerRadius={radius}
+                            cx={centerX}
+                            cy={centerY}
+                            startAngle={(segmentIndex - 1) * angle + startAngleMargin}
+                            endAngle={segmentIndex * angle - endAngleMargin}
+                            key={segmentIndex * outerRadiusIndex}
+                            width={300}
+                        />
+                    );
+                });
+            })}
+            <PolarAngleAxis 
+                cx={centerX} 
+                cy={centerY} 
+                label={'hello'}
+            />
+        </Surface>
+    );
 };
 
 export const RechartsLibDonut = ({data, prop}: DonutProps) => {
@@ -106,4 +149,4 @@ export const RechartsLibDonut = ({data, prop}: DonutProps) => {
           <Pie data={data} dataKey={prop} outerRadius={130} innerRadius={70} fill="#475569" />
         </PieChart>
     );
-}
+};

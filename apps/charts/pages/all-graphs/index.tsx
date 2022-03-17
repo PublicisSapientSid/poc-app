@@ -3,7 +3,6 @@ import styles from "../../styles/Graph.module.css";
 import RechartsLineGraph from "../recharts/line-graph";
 import RechartsBarGraph from "../recharts/bar-graph";
 import RechartsPolarGraph from "../recharts/polar-graph";
-import RechartsDonutGraph from "../recharts/donut-graph";
 
 import ChartJSLineGraph from "../chartjs/line-graph";
 import ChartJSBarGraph from "../chartjs/bar-graph";
@@ -26,7 +25,7 @@ const graphContainer = (heading: string, ...graphs: Array<JSX.Element>) => {
             </div>            
             <div className={styles.allGraphs}>
                 {graphs.map((graph: JSX.Element) => 
-                    <div className={styles.singleGraph}>
+                    <div className={styles.singleGraph} key={Math.random()}>
                         {graph}
                     </div>                        
                 )}
@@ -43,7 +42,7 @@ const AllGraphs: NextPage = () => {
                 <h1>Graphs</h1>
             </div>
             <div className={styles.graph}>
-                {graphContainer("Recharts", <RechartsLineGraph/>, <RechartsBarGraph/>, <RechartsPolarGraph/>, <RechartsDonutGraph/>)}
+                {graphContainer("Recharts", <RechartsLineGraph/>, <RechartsBarGraph/>, <RechartsPolarGraph/>)}
                 {graphContainer("React ChartJS", <ChartJSLineGraph/>, <ChartJSBarGraph/>, <ChartJSPolarGraph/>)}
                 {graphContainer("Victory", <VictoryLineGraph/>, <VictoryBarGraph/>, <VictoryPolarGraph/>)}
                 {graphContainer("React Vis", <ReactVisLineGraph/>, <ReactVisBarGraph/>)}
