@@ -56,7 +56,7 @@ export function Slider({
 }: SliderProps) {
   const [sliderVal, setSliderVal] = useState(defaultVal);
 
-  const handleChange = (e: ChangeEvent<any>) => {
+  const handleChange = (e: ChangeEvent<any>): void => {
     setSliderVal(e.target.value);
   };
 

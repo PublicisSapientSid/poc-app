@@ -5,6 +5,7 @@
     "charts-e2e": "apps/charts-e2e",
     "poc-app": "apps/poc-app",
     "poc-app-e2e": "apps/poc-app-e2e",
+    "radio-button": "libs/radio-button",
     "slider": "libs/slider"
   }
 }
