@@ -1,5 +1,7 @@
 import { ChangeEvent, ChangeEventHandler } from 'react';
 import styles from './radio-button.module.scss';
+import Image from 'next/image';
+import check from './assets/check.png';
 
 /* eslint-disable-next-line */
 export interface RadioButtonProps {
@@ -18,7 +20,7 @@ export function RadioButton({
   handleChange,
 }: RadioButtonProps) {
   return (
-    <>
+    <div className={styles['radio-container']}>
       <input
         type="radio"
         name={name}
@@ -30,8 +32,13 @@ export function RadioButton({
       />
       <label className={styles['radio-label']} htmlFor={String(val)}>
         {label}
+        {isChecked && (
+          <div className={styles['radio-checked']}>
+            <Image src={check} alt="checked image" />
+          </div>
+        )}
       </label>
-    </>
+    </div>
   );
 }
 

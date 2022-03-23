@@ -6,6 +6,7 @@
     "poc-app": "apps/poc-app",
     "poc-app-e2e": "apps/poc-app-e2e",
     "radio-button": "libs/radio-button",
+    "shared": "libs/shared",
     "slider": "libs/slider"
   }
 }

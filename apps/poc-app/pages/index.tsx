@@ -11,26 +11,45 @@ export function Index() {
     setRadioValue(value);
   };
 
+  const mcqValues: {
+    formControlName: string;
+    formValues: {
+      label: string;
+      value: string;
+    }[];
+  } = {
+    formControlName: 'fruits',
+    formValues: [
+      {
+        label: 'Apple',
+        value: 'apple',
+      },
+      {
+        label: 'Mango',
+        value: 'mango',
+      },
+      {
+        label: 'Orange',
+        value: 'orange',
+      },
+    ],
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles['slider']}>
         <Slider max={6} defaultVal={2} stepDivisions={10} />
       </div>
-      <div className={styles['radio-button']}>
-        <RadioButton
-          name="fruits"
-          val="apple"
-          isChecked={radioValue === 'apple'}
-          label="Apple"
-          handleChange={handleChange}
-        />
-        <RadioButton
-          name="fruits"
-          val="mango"
-          isChecked={radioValue === 'mango'}
-          label="Mango"
-          handleChange={handleChange}
-        />
+      <div className={styles['radio-button'] + ' button-sm'}>
+        {mcqValues.formValues.map((mcq) => (
+          <RadioButton
+            name={mcqValues.formControlName}
+            val={mcq.value}
+            isChecked={radioValue === mcq.value}
+            label={mcq.label}
+            handleChange={handleChange}
+          />
+        ))}
       </div>
     </div>
   );

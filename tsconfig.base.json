@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@poc/radio-button": ["libs/radio-button/src/index.ts"],
+      "@poc/shared": ["libs/shared/src/index.ts"],
       "@poc/slider": ["libs/slider/src/index.ts"]
     }
   },
