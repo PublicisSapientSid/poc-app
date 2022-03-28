@@ -1,7 +1,7 @@
 import styles from './index.module.scss';
 import { Slider } from '@poc/slider';
-import { ChangeEvent, useState } from 'react';
 import { MultipleChoiceQuestion } from '../components/MultipleChoiceQuestion';
+import { HeightInput } from '../components/HeightInput';
 
 export function Index() {
   return (
@@ -10,6 +10,7 @@ export function Index() {
         <Slider max={6} defaultVal={2} stepDivisions={10} />
       </div>
       <MultipleChoiceQuestion />
+      <HeightInput />
     </div>
   );
 }

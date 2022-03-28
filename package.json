@@ -6,6 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "number-story": "nx run number-input:storybook",
     "radio-story": "nx run radio-button:storybook",
     "slider-story": "nx run slider:storybook"
   },

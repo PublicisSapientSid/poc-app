@@ -1,7 +1,48 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.input-container {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  width: 100%;
+  height: 72px;
+
+  .inputs {
+    width: 100%;
+
+    label {
+      display: block;
+      color: #4d4d4f;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0px;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 52px;
+      letter-spacing: 0px;
+      text-align: center;
+      color: #002f6c;
+      border: 2px solid #f0f0f0;
+      border-radius: 8px;
+      transition: 0.3s all;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:focus,
+      &:active {
+        outline: none;
+        border: 2px solid #1b99d6;
+      }
+    }
+  }
+}
