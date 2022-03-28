@@ -1,0 +1,23 @@
+{
+  "root": "libs/number-input",
+  "sourceRoot": "libs/number-input/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/number-input/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/number-input"],
+      "options": {
+        "jestConfig": "libs/number-input/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

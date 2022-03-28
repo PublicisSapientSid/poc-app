@@ -3,6 +3,7 @@
   "projects": {
     "charts": "apps/charts",
     "charts-e2e": "apps/charts-e2e",
+    "number-input": "libs/number-input",
     "poc-app": "apps/poc-app",
     "poc-app-e2e": "apps/poc-app-e2e",
     "radio-button": "libs/radio-button",
