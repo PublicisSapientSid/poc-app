@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler } from 'react';
+import { ChangeEvent } from 'react';
 import styles from './radio-button.module.scss';
 import Image from 'next/image';
 import check from './assets/check.png';

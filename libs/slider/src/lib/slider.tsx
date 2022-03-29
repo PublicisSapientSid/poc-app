@@ -52,7 +52,7 @@ export function Slider({
   defaultVal = 3,
   stepDivisions = 10,
   sliderLength = 'md',
-  sliderColor = 'gray-slider',
+  sliderColor = 'blue-slider',
 }: SliderProps) {
   const [sliderVal, setSliderVal] = useState(defaultVal);
 

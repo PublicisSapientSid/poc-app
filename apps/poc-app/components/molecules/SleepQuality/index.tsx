@@ -7,7 +7,12 @@ export const SleepQuality = () => {
       <h1 className={styles['slider-question']}>
         How do you feel about the quantity of your sleep?
       </h1>
-      <Slider max={6} defaultVal={2} stepDivisions={10} />
+      <Slider
+        max={6}
+        defaultVal={2}
+        stepDivisions={10}
+        sliderColor="blue-slider"
+      />
     </div>
   );
 };

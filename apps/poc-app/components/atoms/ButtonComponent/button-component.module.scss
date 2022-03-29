@@ -1,0 +1,19 @@
+.btn {
+  width: 100%;
+  background: #002f6c;
+  border-radius: 40px;
+  height: 48px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:active {
+    background: lighten(#002f6c, 5);
+  }
+}

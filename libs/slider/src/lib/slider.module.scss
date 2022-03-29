@@ -20,7 +20,7 @@
     border-radius: 30px;
 
     &::-webkit-slider-runnable-track {
-      background: #ddd;
+      background: #e9f5fb;
     }
 
     &::-webkit-slider-thumb {
@@ -28,12 +28,11 @@
       width: 30px; /* 1 */
       height: 30px;
       border-radius: 50%;
-      background: #fff;
-      border: 2px solid #999; /* 1 */
+      background: #002f6c;
     }
 
     &:hover:not(:active)::-webkit-slider-thumb {
-      box-shadow: -100vw 0 0 99vw lightgray, 0px 4px 14px 0px #384353;
+      box-shadow: -100vw 0 0 99vw lightgray;
     }
 
     &::-ms-ticks-after {
@@ -53,15 +52,15 @@
   }
 
   .gray-slider::-webkit-slider-thumb {
-    box-shadow: -100vw 0 0 99vw #475569, 0px 4px 14px 0px #384353;
+    box-shadow: -100vw 0 0 99vw #002f6c;
   }
 
   .orange-slider::-webkit-slider-thumb {
-    box-shadow: -100vw 0 0 99vw #ee925d, 0px 4px 14px 0px #384353;
+    box-shadow: -100vw 0 0 99vw #ee925d;
   }
 
   .blue-slider::-webkit-slider-thumb {
-    box-shadow: -100vw 0 0 99vw #5dc5ee, 0px 4px 14px 0px #384353;
+    box-shadow: -100vw 0 0 99vw #1b99d6;
   }
 
   .range-indicators {

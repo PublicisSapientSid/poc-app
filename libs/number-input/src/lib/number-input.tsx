@@ -36,6 +36,7 @@ export function NumberInput({ dataSet }: NumberInputProps) {
           <label htmlFor={`${data.label}_${index}`}>{data.label}</label>
           <input
             id={`${data.label}_${index}`}
+            key={`${data.label}_${index}`}
             type="number"
             max={data.max}
             min={data.min || 0}
