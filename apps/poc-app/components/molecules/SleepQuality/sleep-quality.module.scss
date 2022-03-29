@@ -1,0 +1,12 @@
+.slider {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 30%;
+
+  .slider-question {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 2rem;
+  }
+}

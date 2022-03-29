@@ -5,26 +5,4 @@
   align-items: flex-start;
   height: 100vh;
   padding-top: 5rem;
-
-  .slider,
-  .radio-button {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .slider {
-    width: 30%;
-  }
-
-  .radio-question {
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-    margin-bottom: 1rem;
-  }
-
-  .radio-button {
-    width: 50%;
-    max-width: 400px;
-  }
 }
