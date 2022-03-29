@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './number-input.module.scss';
+import { sanitizeInputValue } from './utils/number-input.service';
 
 /* eslint-disable-next-line */
 export interface NumberInputProps {
@@ -14,7 +15,9 @@ export type numberData = {
 };
 
 export function NumberInput({ dataSet }: NumberInputProps) {
-  const [inputDataSet, setInputDataSet] = useState(dataSet);
+  const correctedDataSet = sanitizeInputValue(dataSet);
+
+  const [inputDataSet, setInputDataSet] = useState(correctedDataSet);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -23,14 +26,15 @@ export function NumberInput({ dataSet }: NumberInputProps) {
     const {
       target: { value: eventValue },
     } = event;
-    let updatedData = [...dataSet];
-    updatedData[index].value = Number(eventValue);
-    setInputDataSet(updatedData);
+    setInputDataSet((data) => {
+      let updatedData = [...data];
+      updatedData[index].value = Number(eventValue);
+      return updatedData;
+    });
   };
 
   return (
     <div className={styles['input-container']}>
-      {/* {JSON.stringify(inputDataSet)} */}
       {inputDataSet.map((data: numberData, index: number) => (
         <div className={styles['inputs']}>
           <label htmlFor={`${data.label}_${index}`}>{data.label}</label>

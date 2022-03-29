@@ -9,16 +9,16 @@ export const HeightInput = () => {
     Dispatch<SetStateAction<numberData[]>>
   ] = useState([
     {
-      min: 0,
-      max: 10,
+      min: 3,
+      max: 7,
       label: 'Feet (ft)',
-      value: 3,
+      value: 5,
     },
     {
-      min: 2,
-      max: 8,
+      min: 0,
+      max: 11,
       label: 'Inches (in)',
-      value: 7,
+      value: 11,
     },
   ]);
 
@@ -30,6 +30,9 @@ export const HeightInput = () => {
   };
 
   const handleUnitConversion = (e: MouseEvent<HTMLDivElement>): void => {
+    let resultant;
+    if (!isMetric) {
+    }
     setIsMetric((isMetric) => !isMetric);
   };
 
