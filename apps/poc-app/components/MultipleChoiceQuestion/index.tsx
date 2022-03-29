@@ -1,6 +1,6 @@
 import { RadioButton } from '@poc/radio-button';
 import { ChangeEvent, useState } from 'react';
-import styles from './MultipleChoiceQuestion.module.scss';
+import styles from './multiple-choice-question.module.scss';
 
 export interface McqValueInterface {
   formControlName: string;

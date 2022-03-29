@@ -1,5 +1,5 @@
 import { numberData, NumberInput } from '@poc/number-input';
-import styles from './HeightInput.module.scss';
+import styles from './height-input.module.scss';
 
 const dataSet: numberData[] = [
   {
