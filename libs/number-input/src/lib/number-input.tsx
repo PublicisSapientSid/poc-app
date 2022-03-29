@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import styles from './number-input.module.scss';
 import { sanitizeInputValue } from './utils/number-input.service';
 
@@ -19,6 +19,10 @@ export function NumberInput({ dataSet }: NumberInputProps) {
 
   const [inputDataSet, setInputDataSet] = useState(correctedDataSet);
 
+  useEffect(() => {
+    setInputDataSet(sanitizeInputValue(dataSet));
+  }, [dataSet]);
+
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
     index: number
@@ -36,11 +40,10 @@ export function NumberInput({ dataSet }: NumberInputProps) {
   return (
     <div className={styles['input-container']}>
       {inputDataSet.map((data: numberData, index: number) => (
-        <div className={styles['inputs']}>
+        <div className={styles['inputs']} key={`${data.label}_${index}`}>
           <label htmlFor={`${data.label}_${index}`}>{data.label}</label>
           <input
             id={`${data.label}_${index}`}
-            key={`${data.label}_${index}`}
             type="number"
             max={data.max}
             min={data.min || 0}
